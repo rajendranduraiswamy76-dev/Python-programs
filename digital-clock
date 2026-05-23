@@ -1,0 +1,42 @@
+import time
+from tkinter import *
+
+def update_time():
+    """Fetches the current time and schedules the next update."""
+    try:
+        # Fetch current date and time (e.g., '2026-05-23 04:44:00 PM')
+        current_time = time.strftime("%Y-%m-%d\n%I:%M:%S %p")
+        clock_label.config(text=current_time)
+        
+        # Schedule the function to run again after 1000 milliseconds (1 second)
+        clock_label.after(1000, update_time)
+        
+    except Exception as error:
+        print(f"An error occurred: {error}")
+
+try:
+    # Setup the main application window
+    root = Tk()
+    root.title("Digital Clock")
+    root.geometry("400x200")
+    root.configure(bg="black")
+
+    # Configure the digital clock label
+    clock_label = Label(
+        root, 
+        font=("Helvetica", 24, "bold"), 
+        bg="black", 
+        fg="lime"
+    )
+    clock_label.pack(expand=True)
+
+    # Initialize the clock
+    update_time()
+
+    # Run the Tkinter event loop
+    root.mainloop()
+
+except KeyboardInterrupt:
+    print("\nClock stopped gracefully by the user.")
+except Exception as e:
+    print(f"Application encountered a critical error: {e}")
