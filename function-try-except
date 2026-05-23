@@ -1,0 +1,23 @@
+def safe_divide(numerator, denominator):
+    """Divides two numbers with full error handling."""
+    try:
+        # Code that might cause an error
+        result = numerator / denominator
+    except ZeroDivisionError:
+        # Runs if denominator is 0
+        return "Error: Cannot divide by zero."
+    except TypeError:
+        # Runs if inputs aren't numbers
+        return "Error: Both inputs must be numbers."
+    else:
+        # Runs ONLY if the try block succeeded
+        print("Calculation successful!")
+        return result
+    finally:
+        # Always runs, regardless of errors (good for cleanup)
+        print("Division attempt finished.")
+
+# Testing the function
+print(safe_divide(10, 2))   # Success
+print(safe_divide(10, 0))   # ZeroDivisionError
+print(safe_divide(10, "a")) # TypeError
