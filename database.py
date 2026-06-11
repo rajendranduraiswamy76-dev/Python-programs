@@ -10,6 +10,7 @@ load_dotenv()  # Load .env variables into environment
 
 # Allow either a single DATABASE_URL or individual DB_* variables.
 DATABASE_URL = os.getenv("DATABASE_URL")
+#DATABASE_URL="postgres://postgres:Vijaya$1@localhost:5432/postgres"
 
 if DATABASE_URL:
     # SQLAlchemy prefers the 'postgresql://' scheme; normalize if needed.
